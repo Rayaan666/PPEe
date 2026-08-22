@@ -31,55 +31,61 @@ import ScrollToTop from './components/ScrollToTop';
 import WhatsAppButton from './components/WhatsAppButton';
 import ScrollToTopButton from './components/ScrollToTopButton';
 
+export function AppContent() {
+  return (
+    <div className="app-container">
+      <ScrollToTop />
+      <CustomCursor />
+      <Navbar />
+      <main>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about-us" element={<About />} />
+          <Route path="/services" element={<Services />} />
+          <Route path="/corporate-events" element={<CorporateEvents />} />
+          <Route path="/corporate-events/" element={<CorporateEvents />} />
+          
+          {/* Dedicated Service Routes */}
+          <Route path="/services/exhibition-stand-design-abu-dhabi" element={<ExhibitionStands />} />
+          <Route path="/services/corporate-gala-events-abu-dhabi" element={<CorporateGalas />} />
+          <Route path="/services/product-launch-events-abu-dhabi" element={<ProductLaunches />} />
+          <Route path="/services/corporate-conference-organizer-abu-dhabi" element={<CorporateConferences />} />
+          <Route path="/services/brand-activation-agency-abu-dhabi" element={<BrandActivations />} />
+          <Route path="/services/theme-decoration-private-events-abu-dhabi" element={<PrivateCelebrations />} />
+
+          {/* SEO Landers */}
+          <Route path="/event-management-company" element={<EventManagementCompany />} />
+          <Route path="/event-management-company/" element={<EventManagementCompany />} />
+          <Route path="/event-organizers" element={<EventOrganizers />} />
+          <Route path="/event-organizers/" element={<EventOrganizers />} />
+          
+          {/* Preserved Blogs */}
+          <Route path="/how-to-design-the-best-creative-event-concept" element={<BlogCreativeConcept />} />
+          <Route path="/how-to-design-the-best-creative-event-concept/" element={<BlogCreativeConcept />} />
+          <Route path="/the-complete-corporate-event-planning-checklist-for-the-uae-2026" element={<BlogPlanningChecklist />} />
+          <Route path="/the-complete-corporate-event-planning-checklist-for-the-uae-2026/" element={<BlogPlanningChecklist />} />
+          <Route path="/how-to-choose-the-right-event-management-companies" element={<BlogChoosingCompany />} />
+          <Route path="/how-to-choose-the-right-event-management-companies/" element={<BlogChoosingCompany />} />
+
+          <Route path="/gallery" element={<Gallery />} />
+          <Route path="/blogs" element={<Blogs />} />
+          <Route path="/rentals" element={<Rentals />} />
+          <Route path="/contact-us" element={<Contact />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </main>
+      <Footer />
+      <WhatsAppButton />
+      <ScrollToTopButton />
+    </div>
+  );
+}
+
 function App() {
   return (
     <HelmetProvider>
       <Router>
-        <ScrollToTop />
-        <CustomCursor />
-        <div className="app-container">
-          <Navbar />
-          <main>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/about-us" element={<About />} />
-              <Route path="/services" element={<Services />} />
-              <Route path="/corporate-events" element={<CorporateEvents />} />
-              <Route path="/corporate-events/" element={<CorporateEvents />} />
-              
-              {/* Dedicated Service Routes */}
-              <Route path="/services/exhibition-stand-design-abu-dhabi" element={<ExhibitionStands />} />
-              <Route path="/services/corporate-gala-events-abu-dhabi" element={<CorporateGalas />} />
-              <Route path="/services/product-launch-events-abu-dhabi" element={<ProductLaunches />} />
-              <Route path="/services/corporate-conference-organizer-abu-dhabi" element={<CorporateConferences />} />
-              <Route path="/services/brand-activation-agency-abu-dhabi" element={<BrandActivations />} />
-              <Route path="/services/theme-decoration-private-events-abu-dhabi" element={<PrivateCelebrations />} />
-
-              {/* SEO Landers */}
-              <Route path="/event-management-company" element={<EventManagementCompany />} />
-              <Route path="/event-management-company/" element={<EventManagementCompany />} />
-              <Route path="/event-organizers" element={<EventOrganizers />} />
-              <Route path="/event-organizers/" element={<EventOrganizers />} />
-              
-              {/* Preserved Blogs */}
-              <Route path="/how-to-design-the-best-creative-event-concept" element={<BlogCreativeConcept />} />
-              <Route path="/how-to-design-the-best-creative-event-concept/" element={<BlogCreativeConcept />} />
-              <Route path="/the-complete-corporate-event-planning-checklist-for-the-uae-2026" element={<BlogPlanningChecklist />} />
-              <Route path="/the-complete-corporate-event-planning-checklist-for-the-uae-2026/" element={<BlogPlanningChecklist />} />
-              <Route path="/how-to-choose-the-right-event-management-companies" element={<BlogChoosingCompany />} />
-              <Route path="/how-to-choose-the-right-event-management-companies/" element={<BlogChoosingCompany />} />
-
-              <Route path="/gallery" element={<Gallery />} />
-              <Route path="/blogs" element={<Blogs />} />
-              <Route path="/rentals" element={<Rentals />} />
-              <Route path="/contact-us" element={<Contact />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </main>
-          <Footer />
-          <WhatsAppButton />
-          <ScrollToTopButton />
-        </div>
+        <AppContent />
       </Router>
     </HelmetProvider>
   );

@@ -1,14 +1,12 @@
-import puppeteer from 'puppeteer';
-import express from 'express';
 import fs from 'fs/promises';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { execSync } from 'child_process';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-
-const PORT = 3000;
 const DIST_DIR = path.resolve(__dirname, 'dist');
+const SERVER_ENTRY = path.resolve(DIST_DIR, 'server', 'entry-server.js');
 
 const routes = [
   '/',
@@ -30,65 +28,39 @@ const routes = [
   '/how-to-choose-the-right-event-management-companies/'
 ];
 
-async function startServer() {
-  const app = express();
-  
-  // Create a clean base HTML file for fallback to prevent leaking prerendered index.html data
-  await fs.copyFile(path.join(DIST_DIR, 'index.html'), path.join(DIST_DIR, 'base.html'));
-
-  // Serve static files from dist
-  app.use(express.static(DIST_DIR));
-  
-  // Fallback to clean base.html for SPA routing
-  app.use((req, res, next) => {
-    res.sendFile(path.join(DIST_DIR, 'base.html'));
-  });
-
-  return new Promise((resolve) => {
-    const server = app.listen(PORT, () => {
-      resolve(server);
-    });
-  });
-}
-
 async function prerender() {
-  console.log('Starting local server for prerendering...');
-  const server = await startServer();
+  console.log('Building Vite client bundle...');
+  execSync('npx vite build', { stdio: 'inherit' });
+
+  console.log('Building Vite server (SSR) bundle...');
+  execSync('npx vite build --ssr src/entry-server.jsx --outDir dist/server', { stdio: 'inherit' });
+
+  console.log('Loading SSR bundle...');
+  const { render } = await import(`file://${SERVER_ENTRY}`);
   
-  console.log('Launching Puppeteer...');
-  const browser = await puppeteer.launch({ 
-    headless: 'new',
-    args: ['--no-sandbox', '--disable-setuid-sandbox']
-  });
-  const page = await browser.newPage();
-  
-  // Optional: Block analytics or external resources to speed up rendering
-  await page.setRequestInterception(true);
-  page.on('request', (req) => {
-    const resourceType = req.resourceType();
-    if (['image', 'media'].includes(resourceType)) {
-      req.abort(); // Abort heavy assets to speed up
-    } else {
-      req.continue();
-    }
-  });
+  const template = await fs.readFile(path.join(DIST_DIR, 'index.html'), 'utf-8');
 
   for (const route of routes) {
-    console.log(`Prerendering route: ${route}`);
-    const url = `http://localhost:${PORT}${route}`;
+    console.log(`Prerendering route (SSR): ${route}`);
     
-    try {
-      await page.goto(url, { waitUntil: 'networkidle2', timeout: 15000 });
-      // wait extra 1s for helmet
-      await new Promise(r => setTimeout(r, 1000));
-    } catch (e) {
-      console.log(`Timeout or error on ${route}, saving current DOM anyway...`);
+    const helmetContext = {};
+    const { html } = render(route, helmetContext);
+    const { helmet } = helmetContext;
+
+    // Build the injected head tags
+    let headTags = '';
+    if (helmet) {
+      headTags += helmet.title.toString() + '\n';
+      headTags += helmet.meta.toString() + '\n';
+      headTags += helmet.link.toString() + '\n';
+      headTags += helmet.script.toString() + '\n';
     }
-    
-    // Evaluate to remove any temporary injection artifacts if necessary, or let helmet hydrate
-    const html = await page.content();
-    
-    // Determine file path
+
+    // Insert head tags before </head> and body HTML inside <div id="root"></div>
+    let pageHtml = template.replace('<!-- SEO Meta Tags are managed dynamically by React Helmet Async and Prerendering -->', headTags);
+    pageHtml = pageHtml.replace('<div id="root"></div>', `<div id="root">${html}</div>`);
+
+    // Determine target output file path
     let filePath = path.join(DIST_DIR, route);
     if (route === '/') {
       filePath = path.join(DIST_DIR, 'index.html');
@@ -98,19 +70,16 @@ async function prerender() {
         filePath = path.join(filePath, 'index.html');
       }
     }
-    
-    await fs.writeFile(filePath, html, 'utf-8');
-    console.log(`Saved ${filePath}`);
+
+    await fs.writeFile(filePath, pageHtml, 'utf-8');
+    console.log(`Saved pre-rendered HTML to ${filePath}`);
   }
 
-  await browser.close();
+  // Clean up the server bundle so we don't deploy unnecessary server scripts to Vercel static hosting
+  console.log('Cleaning up server directory...');
+  await fs.rm(path.join(DIST_DIR, 'server'), { recursive: true, force: true });
   
-  return new Promise((resolve) => {
-    server.close(() => {
-      console.log('Prerendering complete. Server shut down.');
-      resolve();
-    });
-  });
+  console.log('Prerendering completed successfully.');
 }
 
 prerender().catch(err => {
