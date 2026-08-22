@@ -1,0 +1,148 @@
+.corporate-events-page {
+  background-color: var(--color-very-light-peach);
+  color: var(--color-dark-charcoal);
+}
+
+/* Hero Section */
+.ce-hero {
+  padding: 10rem 2rem 5rem;
+  text-align: center;
+  background: radial-gradient(circle at 50% 30%, rgba(247, 213, 199, 0.4) 0%, transparent 70%);
+}
+
+.ce-breadcrumbs {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.76rem;
+  color: rgba(47, 47, 47, 0.6);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+}
+
+.ce-breadcrumbs a {
+  color: var(--color-dark-charcoal);
+  transition: color var(--transition-fast);
+}
+
+.ce-breadcrumbs a:hover {
+  color: var(--color-rose-gold);
+}
+
+.ce-eyebrow {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  color: var(--color-rose-gold);
+  margin-bottom: 1rem;
+}
+
+.ce-title {
+  font-family: var(--font-heading);
+  font-size: clamp(3rem, 5vw, 5.5rem);
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+}
+
+.ce-subtitle {
+  font-size: clamp(1.05rem, 1.25vw, 1.22rem);
+  line-height: 1.75;
+  color: rgba(47, 47, 47, 0.75);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Hub Section */
+.ce-services-hub {
+  padding: 5rem 2rem;
+}
+
+.ce-hub-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.ce-hub-header h2 {
+  font-size: clamp(2.5rem, 4vw, 4rem);
+  margin-bottom: 1rem;
+}
+
+.ce-hub-header p {
+  margin: 0 auto;
+  max-width: 600px;
+}
+
+.ce-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.ce-card {
+  background: white;
+  padding: 3rem 2rem;
+  border-radius: 12px;
+  border: 1px solid rgba(201, 136, 141, 0.2);
+  transition: transform var(--transition-med), box-shadow var(--transition-med);
+}
+
+.ce-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 45px rgba(201, 136, 141, 0.1);
+}
+
+.ce-card h3 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.ce-card h3 a {
+  color: var(--color-dark-charcoal);
+}
+
+.ce-card p {
+  margin-bottom: 2rem;
+  font-size: 0.95rem;
+}
+
+.ce-link {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--color-rose-gold);
+  font-weight: 600;
+}
+
+/* SEO Content Section */
+.ce-seo-content {
+  padding: 5rem 2rem 8rem;
+  background-color: white;
+  border-top: 1px solid rgba(201, 136, 141, 0.1);
+}
+
+.seo-article {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.seo-article h2 {
+  font-size: clamp(2rem, 3vw, 3rem);
+  margin-bottom: 2rem;
+}
+
+.seo-article p {
+  margin: 0 auto 1.5rem;
+  font-size: 1.05rem;
+  line-height: 1.8;
+}
+
+.ce-cta-wrap {
+  margin-top: 3rem;
+}

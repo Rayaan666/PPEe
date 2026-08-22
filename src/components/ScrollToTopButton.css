@@ -1,0 +1,35 @@
+.scroll-top-btn {
+  position: fixed;
+  bottom: 6.5rem; /* sits safely above the WhatsApp button */
+  right: 2rem;
+  z-index: 9998;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 1px solid rgba(201, 136, 141, 0.4);
+  background: rgba(255, 249, 247, 0.92);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: var(--color-rose-gold, #c9888d);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 18px rgba(201, 136, 141, 0.2);
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.3s ease, transform 0.3s ease, background 0.2s ease, box-shadow 0.2s ease;
+  pointer-events: none;
+}
+
+.scroll-top-btn--visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.scroll-top-btn:hover {
+  background: var(--color-rose-gold, #c9888d);
+  color: #fff;
+  box-shadow: 0 6px 24px rgba(201, 136, 141, 0.4);
+}
