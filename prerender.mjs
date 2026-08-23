@@ -28,12 +28,19 @@ const routes = [
   '/how-to-choose-the-right-event-management-companies/'
 ];
 
+const skipClientBuild = process.argv.includes('--skip-client-build');
+
 async function prerender() {
-  console.log('Building Vite client bundle...');
-  execSync('npx vite build', { stdio: 'inherit' });
+  if (!skipClientBuild) {
+    console.log('Building Vite client bundle...');
+    execSync('npx vite build', { stdio: 'inherit' });
+  }
 
   console.log('Building Vite server (SSR) bundle...');
-  execSync('npx vite build --ssr src/entry-server.jsx --outDir dist/server', { stdio: 'inherit' });
+  execSync('npx vite build --ssr src/entry-server.jsx --outDir dist/server', {
+    env: { ...process.env, VITE_SSR_BUILD: 'true' },
+    stdio: 'inherit'
+  });
 
   console.log('Loading SSR bundle...');
   const { render } = await import(`file://${SERVER_ENTRY}`);
@@ -57,8 +64,8 @@ async function prerender() {
     }
 
     // Insert head tags before </head> and body HTML inside <div id="root"></div>
-    let pageHtml = template.replace('<!-- SEO Meta Tags are managed dynamically by React Helmet Async and Prerendering -->', headTags);
-    pageHtml = pageHtml.replace('<div id="root"></div>', `<div id="root">${html}</div>`);
+    let pageHtml = template.replace(/<!-- SEO Meta Tags.*-->/i, headTags);
+    pageHtml = pageHtml.replace(/<div\s+id="?root"?\s*><\/div>/i, `<div id="root">${html}</div>`);
 
     // Determine target output file path
     let filePath = path.join(DIST_DIR, route);
