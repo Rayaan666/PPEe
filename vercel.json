@@ -2,6 +2,17 @@
   "cleanUrls": true,
   "trailingSlash": true,
   "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.perfectpartyeventsae.com"
+        }
+      ],
+      "destination": "https://perfectpartyeventsae.com/$1",
+      "permanent": true
+    },
     { "source": "/top-corporate-event-organizers-and-corporate-events-planner", "destination": "/corporate-events/", "permanent": true },
     { "source": "/services/corporate-events", "destination": "/corporate-events/", "permanent": true },
     { "source": "/exhibition-management-company", "destination": "/services/exhibition-stand-design-abu-dhabi/", "permanent": true },
@@ -15,26 +26,6 @@
     { "source": "/the-ultimate-social-event-planning-checklist", "destination": "/services/theme-decoration-private-events-abu-dhabi/", "permanent": true }
   ],
   "rewrites": [
-    { "source": "/about-us", "destination": "/index.html" },
-    { "source": "/services", "destination": "/index.html" },
-    { "source": "/services/exhibition-stand-design-abu-dhabi", "destination": "/index.html" },
-    { "source": "/services/corporate-gala-events-abu-dhabi", "destination": "/index.html" },
-    { "source": "/services/product-launch-events-abu-dhabi", "destination": "/index.html" },
-    { "source": "/services/corporate-conference-organizer-abu-dhabi", "destination": "/index.html" },
-    { "source": "/services/brand-activation-agency-abu-dhabi", "destination": "/index.html" },
-    { "source": "/services/theme-decoration-private-events-abu-dhabi", "destination": "/index.html" },
-    { "source": "/gallery", "destination": "/index.html" },
-    { "source": "/blogs", "destination": "/index.html" },
-    { "source": "/rentals", "destination": "/index.html" },
-    { "source": "/corporate-events", "destination": "/index.html" },
-    { "source": "/contact-us", "destination": "/index.html" },
-    { "source": "/event-management-company", "destination": "/index.html" },
-    { "source": "/event-organizers", "destination": "/index.html" },
-    { "source": "/how-to-design-the-best-creative-event-concept", "destination": "/index.html" },
-    { "source": "/the-complete-corporate-event-planning-checklist-for-the-uae-2026", "destination": "/index.html" },
-    { "source": "/how-to-choose-the-right-event-management-companies", "destination": "/index.html" },
-    { "source": "/sitemap.xml", "destination": "/sitemap.xml" },
-    { "source": "/robots.txt", "destination": "/robots.txt" },
-    { "source": "/", "destination": "/index.html" }
+    { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
