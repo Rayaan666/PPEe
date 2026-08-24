@@ -2,17 +2,6 @@
   "cleanUrls": true,
   "trailingSlash": true,
   "redirects": [
-    {
-      "source": "/(.*)",
-      "has": [
-        {
-          "type": "host",
-          "value": "www.perfectpartyeventsae.com"
-        }
-      ],
-      "destination": "https://perfectpartyeventsae.com/$1",
-      "permanent": true
-    },
     { "source": "/top-corporate-event-organizers-and-corporate-events-planner", "destination": "/corporate-events/", "permanent": true },
     { "source": "/services/corporate-events", "destination": "/corporate-events/", "permanent": true },
     { "source": "/exhibition-management-company", "destination": "/services/exhibition-stand-design-abu-dhabi/", "permanent": true },
