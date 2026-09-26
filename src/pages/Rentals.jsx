@@ -1,8 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import './Rentals.css';
 
 const Rentals = () => {
+  const [activeTab, setActiveTab] = useState('all');
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -41,11 +43,240 @@ const Rentals = () => {
     window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
   };
 
+  const handleFoodWhatsAppEnquiry = (productName) => {
+    const phoneNumber = '971501045227';
+    const message = encodeURIComponent(`Hi Perfect Party Events, I’m interested in the ${productName} for my event. Could you please share availability and details?`);
+    window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
+  };
+
+  const foodStationsAndTreats = [
+    // FOOD STATIONS
+    {
+      id: 'popcorn',
+      name: 'Popcorn',
+      type: 'food-station',
+      category: 'Live Food Station',
+      subtitle: 'Freshly popped warm gourmet popcorn cart with vintage cinema charm',
+      image: 'https://images.unsplash.com/photo-1585647347483-22b66260dfff?auto=format&fit=crop&w=800&q=80',
+      alt: 'Live Popcorn Machine Rental Abu Dhabi - Perfect Party Events',
+      isFeature: false
+    },
+    {
+      id: 'cotton-candy',
+      name: 'Cotton Candy',
+      type: 'food-station',
+      category: 'Live Food Station',
+      subtitle: 'Freshly spun pastel sugar floss clouds crafted live for guests',
+      image: 'https://images.unsplash.com/photo-1575224300306-1b8da36134ec?auto=format&fit=crop&w=800&q=80',
+      alt: 'Cotton Candy Machine Rental Abu Dhabi - Event Live Food Station',
+      isFeature: false
+    },
+    {
+      id: 'ice-cream',
+      name: 'Ice Cream',
+      type: 'food-station',
+      category: 'Feature Live Station',
+      subtitle: 'Artisanal soft-serve & gelato station with crisp waffle cones, sauces & luxury toppings bar',
+      image: 'https://res.cloudinary.com/iiddvwaz/image/upload/v1/ChatGPT_Image_Aug_30_2026_06_36_06_AM',
+      alt: 'Ice Cream Machine Rental Abu Dhabi - Luxury Outdoor Event Live Station',
+      isFeature: true
+    },
+    {
+      id: 'sweet-corn',
+      name: 'Sweet Corn',
+      type: 'food-station',
+      category: 'Live Food Station',
+      subtitle: 'Steamed buttered sweet corn served piping hot with signature seasonings',
+      image: 'https://res.cloudinary.com/iiddvwaz/image/upload/v1/WhatsApp_Image_2026-08-27_at_3.20.16_PM',
+      alt: 'Steamed Sweet Corn Station Rental Abu Dhabi - Event Catering',
+      isFeature: false
+    },
+    {
+      id: 'spiral-potatoes',
+      name: 'Spiral Potatoes',
+      type: 'food-station',
+      category: 'Live Food Station',
+      subtitle: 'Crispy golden tornado spiral potato skewers seasoned to perfection',
+      image: 'https://res.cloudinary.com/iiddvwaz/image/upload/v1/spiral-potatoes',
+      alt: 'Spiral Potato Tornado Skewers Live Station Abu Dhabi',
+      isFeature: false
+    },
+    {
+      id: 'mini-burgers',
+      name: 'Mini Burgers',
+      type: 'food-station',
+      category: 'Live Food Station',
+      subtitle: 'Gourmet brioche beef & chicken sliders assembled fresh at your event',
+      image: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=800&q=80',
+      alt: 'Mini Slider Burgers Live Catering Station Abu Dhabi',
+      isFeature: false
+    },
+    {
+      id: 'nuggets',
+      name: 'Nuggets',
+      type: 'food-station',
+      category: 'Live Food Station',
+      subtitle: 'Crispy golden chicken bites served with an array of artisanal dips',
+      image: 'https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&w=800&q=80',
+      alt: 'Crispy Chicken Nuggets Station for Events Abu Dhabi',
+      isFeature: false
+    },
+    {
+      id: 'fries',
+      name: 'Fries',
+      type: 'food-station',
+      category: 'Live Food Station',
+      subtitle: 'Hand-cut shoestring & truffle parmesan fries in bespoke cones',
+      image: 'https://images.unsplash.com/photo-1541592106381-b31e9677c0e5?auto=format&fit=crop&w=800&q=80',
+      alt: 'Gourmet Fries Station Abu Dhabi - Party Food Stations',
+      isFeature: false
+    },
+    {
+      id: 'frozen-yogurt',
+      name: 'Frozen Yogurt',
+      type: 'food-station',
+      category: 'Live Food Station',
+      subtitle: 'Refreshing swirled froyo bar with fresh berries & sweet crumbles',
+      image: 'https://images.unsplash.com/photo-1488900128323-21503983a07e?auto=format&fit=crop&w=800&q=80',
+      alt: 'Frozen Yogurt Live Station Rental UAE',
+      isFeature: false
+    },
+    {
+      id: 'hotdogs',
+      name: 'Hotdogs',
+      type: 'food-station',
+      category: 'Live Food Station',
+      subtitle: 'Classic New York style cart hot dogs with gourmet relishes & brioche buns',
+      image: 'https://images.unsplash.com/photo-1619740455993-9e612b1af08a?auto=format&fit=crop&w=800&q=80',
+      alt: 'Gourmet Live Hot Dog Cart Abu Dhabi',
+      isFeature: false
+    },
+    {
+      id: 'nachos',
+      name: 'Nachos',
+      type: 'food-station',
+      category: 'Live Food Station',
+      subtitle: 'Warm artisan tortilla crisps with spiced queso, fresh guacamole & salsa',
+      image: 'https://images.unsplash.com/photo-1513456852971-30c0b8199d4d?auto=format&fit=crop&w=800&q=80',
+      alt: 'Warm Nacho Station with Cheese & Salsa Abu Dhabi',
+      isFeature: false
+    },
+    {
+      id: 'chocolate-fountain',
+      name: 'Chocolate Fountain',
+      type: 'food-station',
+      category: 'Feature Live Station',
+      subtitle: 'Cascading tiers of rich Belgian chocolate with fresh strawberry & marshmallow skewers',
+      image: 'https://images.unsplash.com/photo-1511381939415-e44015466834?auto=format&fit=crop&w=800&q=80',
+      alt: 'Cascading Chocolate Fountain Rental Abu Dhabi UAE',
+      isFeature: true
+    },
+    {
+      id: 'hot-chocolate',
+      name: 'Hot Chocolate',
+      type: 'food-station',
+      category: 'Live Food Station',
+      subtitle: 'Velvety artisanal hot cocoa bar with toasted marshmallows & cinnamon sprinkles',
+      image: 'https://images.unsplash.com/photo-1542990253-0d0f5be5f0ed?auto=format&fit=crop&w=800&q=80',
+      alt: 'Artisanal Hot Chocolate Station Abu Dhabi Events',
+      isFeature: false
+    },
+
+    // TREATS & HOSPITALITY
+    {
+      id: 'lemonade',
+      name: 'Lemonade',
+      type: 'treats',
+      category: 'Feature Hospitality',
+      subtitle: 'Hand-crafted citrus & berry infused lemonades served from luxury bespoke carts',
+      image: 'https://res.cloudinary.com/iiddvwaz/image/upload/v1/ChatGPT_Image_Aug_30_2026_06_04_24_PM',
+      alt: 'Vintage Lemonade Cart Rental Abu Dhabi - Event Drink Station',
+      isFeature: true
+    },
+    {
+      id: 'mini-pancakes',
+      name: 'Mini Pancakes',
+      type: 'treats',
+      category: 'Treats & Hospitality',
+      subtitle: 'Live golden Dutch poffertjes drizzled with warm Belgian chocolate & berries',
+      image: 'https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?auto=format&fit=crop&w=800&q=80',
+      alt: 'Live Mini Pancake Station Rental Abu Dhabi',
+      isFeature: false
+    },
+    {
+      id: 'crepes',
+      name: 'Crepes',
+      type: 'treats',
+      category: 'Treats & Hospitality',
+      subtitle: 'Thin French crepes made to order with chocolate, caramel & fruit compotes',
+      image: 'https://images.unsplash.com/photo-1519676867240-f03562e64548?auto=format&fit=crop&w=800&q=80',
+      alt: 'Live Crepe Making Station Abu Dhabi Event Catering',
+      isFeature: false
+    },
+
+    {
+      id: 'candy-bar',
+      name: 'Candy Bar',
+      type: 'treats',
+      category: 'Treats & Hospitality',
+      subtitle: 'Curated crystal jars filled with luxury pastel confections & vintage sweets',
+      image: 'https://images.unsplash.com/photo-1582058091505-f87a2e55a40f?auto=format&fit=crop&w=800&q=80',
+      alt: 'Aesthetic Event Candy Bar Display Abu Dhabi',
+      isFeature: false
+    },
+    {
+      id: 'donut-bar',
+      name: 'Donut Bar',
+      type: 'treats',
+      category: 'Treats & Hospitality',
+      subtitle: 'Interactive designer donut wall & stands featuring artisan glazes & toppings',
+      image: 'https://res.cloudinary.com/iiddvwaz/image/upload/v1/WhatsApp_Image_2026-09-23_at_1.26.56_PM',
+      alt: 'Gourmet Donut Wall & Bar Display Abu Dhabi',
+      isFeature: false
+    },
+    {
+      id: 'charcuterie-bar',
+      name: 'Charcuterie Bar',
+      type: 'treats',
+      category: 'Hospitality',
+      subtitle: 'Generous grazing banquet with imported cheeses, artisan crackers, figs & grapes',
+      image: 'https://images.unsplash.com/photo-1541529086526-db283c563270?auto=format&fit=crop&w=800&q=80',
+      alt: 'Luxury Grazing Table and Charcuterie Bar Abu Dhabi',
+      isFeature: false
+    },
+    {
+      id: 'kids-meal-boxes',
+      name: 'Kids Meal Boxes',
+      type: 'treats',
+      category: 'Hospitality',
+      subtitle: 'Chic personalized party meal gift boxes packed with gourmet treats for young guests',
+      image: 'https://res.cloudinary.com/iiddvwaz/image/upload/v1/kids-meal-boxes',
+      alt: 'Kids Party Meal Boxes Abu Dhabi Event Catering',
+      isFeature: false
+    },
+    {
+      id: 'gahwa-service',
+      name: 'Gahwa Service',
+      type: 'treats',
+      category: 'Heritage Hospitality',
+      subtitle: 'Traditional Emirati hospitality served with royal golden dallah, finjan & premium dates',
+      image: 'https://res.cloudinary.com/iiddvwaz/image/upload/v1/gahwa-service',
+      alt: 'Traditional Emirati Gahwa Coffee Service Abu Dhabi Events',
+      isFeature: true
+    }
+  ];
+
+  const filteredFoodItems = foodStationsAndTreats.filter(item => {
+    if (activeTab === 'food-stations') return item.type === 'food-station';
+    if (activeTab === 'treats') return item.type === 'treats';
+    return true;
+  });
+
   const rentalsStructuredData = {
     '@context': 'https://schema.org',
     '@type': 'WebPage',
-    name: 'Premium Event Rentals in Abu Dhabi & UAE',
-    description: 'Explore event furniture, equipment and party rentals for corporate events, private celebrations, exhibitions and premium experiences across the UAE.',
+    name: 'Premium Event Rentals & Live Food Stations in Abu Dhabi & UAE',
+    description: 'Explore event furniture, equipment rentals, and live event food stations including ice cream, popcorn, sweet corn, and bespoke treats across Abu Dhabi and the UAE.',
     url: 'https://perfectpartyeventsae.com/rentals/',
     publisher: {
       '@type': 'Organization',
@@ -56,15 +287,15 @@ const Rentals = () => {
   return (
     <div className="rentals-page-wrapper">
       <Helmet>
-        <title>Premium Event Rentals in Abu Dhabi & UAE | Perfect Party Events</title>
+        <title>Premium Event Rentals & Live Food Stations in Abu Dhabi | Perfect Party Events</title>
         <meta
           name="description"
-          content="Explore premium event furniture, equipment, and party rentals in Abu Dhabi. Perfect Party Events provides luxury event rentals for corporate and private events across the UAE."
+          content="Explore premium event furniture, party rentals, and interactive food stations in Abu Dhabi. From ice cream and popcorn machine rentals to luxury catering stations and bespoke treats across the UAE."
         />
-        <meta name="keywords" content="event rentals Abu Dhabi, party rentals Abu Dhabi, event furniture rental Abu Dhabi, event equipment rental Abu Dhabi, tables and chairs rental Abu Dhabi, event rentals UAE" />
+        <meta name="keywords" content="event rentals Abu Dhabi, party rentals Abu Dhabi, event food stations Abu Dhabi, party food stations Abu Dhabi, ice cream machine rental Abu Dhabi, popcorn machine rental Abu Dhabi, cotton candy machine rental Abu Dhabi, event catering Abu Dhabi, event equipment rental Abu Dhabi, event rentals UAE" />
         <link rel="canonical" href="https://perfectpartyeventsae.com/rentals/" />
-        <meta property="og:title" content="Premium Event Rentals in Abu Dhabi & UAE | Perfect Party Events" />
-        <meta property="og:description" content="Explore premium event furniture, equipment, and party rentals in Abu Dhabi. Perfect Party Events provides luxury event rentals for corporate and private events across the UAE." />
+        <meta property="og:title" content="Premium Event Rentals & Live Food Stations in Abu Dhabi | Perfect Party Events" />
+        <meta property="og:description" content="Explore premium event furniture, party rentals, and interactive food stations in Abu Dhabi. From ice cream and popcorn machine rentals to luxury catering stations across the UAE." />
         <meta property="og:url" content="https://perfectpartyeventsae.com/rentals/" />
         <meta property="og:type" content="website" />
         <script type="application/ld+json">{JSON.stringify(rentalsStructuredData)}</script>
@@ -134,6 +365,101 @@ const Rentals = () => {
                 </button>
               </div>
             ))}
+          </div>
+
+          {/* VISUALLY DISTINCT FOOD STATIONS & TREATS COLLECTION */}
+          <div className="food-stations-collection">
+            <div className="food-stations-intro">
+              <span className="food-stations-eyebrow">EXPERIENTIAL LIVE STATIONS</span>
+              <h3 className="food-stations-title">FOOD STATIONS &amp; TREATS</h3>
+              <p className="food-stations-subtitle">
+                Interactive favourites for events, celebrations and corporate experiences.
+              </p>
+            </div>
+
+            {/* Interactive Category Filter Tabs */}
+            <div className="food-tab-filters" role="tablist" aria-label="Food collection categories">
+              <button 
+                className={`food-tab-btn ${activeTab === 'all' ? 'active' : ''}`}
+                onClick={() => setActiveTab('all')}
+                role="tab"
+                aria-selected={activeTab === 'all'}
+              >
+                All Experiences ({foodStationsAndTreats.length})
+              </button>
+              <button 
+                className={`food-tab-btn ${activeTab === 'food-stations' ? 'active' : ''}`}
+                onClick={() => setActiveTab('food-stations')}
+                role="tab"
+                aria-selected={activeTab === 'food-stations'}
+              >
+                Food Stations (13)
+              </button>
+              <button 
+                className={`food-tab-btn ${activeTab === 'treats' ? 'active' : ''}`}
+                onClick={() => setActiveTab('treats')}
+                role="tab"
+                aria-selected={activeTab === 'treats'}
+              >
+                Treats &amp; Hospitality (13)
+              </button>
+            </div>
+
+            {/* Compact Refined Grid */}
+            <div className="food-editorial-grid">
+              {filteredFoodItems.map((item) => (
+                <article 
+                  className="food-editorial-card" 
+                  key={item.id}
+                >
+                  <div 
+                    className="food-card-media"
+                    onClick={() => handleFoodWhatsAppEnquiry(item.name)}
+                    role="button"
+                    tabIndex={0}
+                    aria-label={`Enquire about ${item.name} on WhatsApp`}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        handleFoodWhatsAppEnquiry(item.name);
+                      }
+                    }}
+                  >
+                    <img 
+                      src={item.image} 
+                      alt={item.alt}
+                      className="food-card-img" 
+                      loading="lazy"
+                    />
+                    <div className="food-card-hover-overlay">
+                      <span className="food-hover-category">{item.category}</span>
+                      <div className="food-hover-action-pill">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                          <path d="M17.472 14.382C17.153 14.221 15.561 13.435 15.269 13.332C14.978 13.228 14.766 13.176 14.553 13.489C14.341 13.803 13.731 14.536 13.545 14.745C13.359 14.954 13.174 14.981 12.855 14.823C12.537 14.665 11.493 14.325 10.252 13.211C9.287 12.346 8.639 11.285 8.453 10.971C8.267 10.657 8.434 10.487 8.594 10.329C8.737 10.187 8.913 9.96 9.072 9.776C9.231 9.593 9.285 9.462 9.391 9.253C9.497 9.043 9.444 8.86 9.364 8.703C9.285 8.546 8.647 6.974 8.381 6.347C8.121 5.732 7.857 5.814 7.666 5.805C7.491 5.796 7.278 5.796 7.066 5.796C6.853 5.796 6.508 5.875 6.216 6.188C5.924 6.502 5.099 7.261 5.099 8.805C5.099 10.35 6.242 11.841 6.402 12.051C6.561 12.261 8.618 15.421 11.758 16.779C12.505 17.102 13.086 17.297 13.543 17.441C14.292 17.68 14.975 17.645 15.513 17.567C16.113 17.48 17.365 16.812 17.63 16.079C17.895 15.347 17.895 14.718 17.789 14.588C17.683 14.456 17.472 14.382 17.472 14.382ZM11.996 22H11.992C10.301 22 8.653 21.545 7.211 20.697L6.877 20.499L3.528 21.378L4.425 18.106L4.207 17.76C3.275 16.279 2.784 14.536 2.784 12.753C2.784 7.667 6.921 3.531 12.008 3.531C14.475 3.531 16.786 4.492 18.529 6.236C20.272 7.978 21.233 10.288 21.233 12.758C21.231 17.842 17.094 22 11.996 22ZM20.088 4.667C17.925 2.5 15.056 1.306 12.003 1.306C5.69 1.306 0.551 6.444 0.551 12.756C0.551 14.774 1.077 16.735 2.059 18.455L0 26L7.697 23.982C9.352 24.877 11.187 25.352 12.046 25.352H12.052C18.365 25.352 23.504 20.213 23.504 13.903C23.504 10.849 22.316 7.979 20.088 4.667Z"/>
+                        </svg>
+                        <span>Enquire on WhatsApp</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="food-card-info">
+                    <span className="food-card-tag">{item.category}</span>
+                    <h4 className="food-card-name">{item.name}</h4>
+                    <p className="food-card-desc">{item.subtitle}</p>
+                    <button 
+                      className="food-card-action-btn"
+                      onClick={() => handleFoodWhatsAppEnquiry(item.name)}
+                      aria-label={`Enquire about ${item.name} on WhatsApp`}
+                    >
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path d="M17.472 14.382C17.153 14.221 15.561 13.435 15.269 13.332C14.978 13.228 14.766 13.176 14.553 13.489C14.341 13.803 13.731 14.536 13.545 14.745C13.359 14.954 13.174 14.981 12.855 14.823C12.537 14.665 11.493 14.325 10.252 13.211C9.287 12.346 8.639 11.285 8.453 10.971C8.267 10.657 8.434 10.487 8.594 10.329C8.737 10.187 8.913 9.96 9.072 9.776C9.231 9.593 9.285 9.462 9.391 9.253C9.497 9.043 9.444 8.86 9.364 8.703C9.285 8.546 8.647 6.974 8.381 6.347C8.121 5.732 7.857 5.814 7.666 5.805C7.491 5.796 7.278 5.796 7.066 5.796C6.853 5.796 6.508 5.875 6.216 6.188C5.924 6.502 5.099 7.261 5.099 8.805C5.099 10.35 6.242 11.841 6.402 12.051C6.561 12.261 8.618 15.421 11.758 16.779C12.505 17.102 13.086 17.297 13.543 17.441C14.292 17.68 14.975 17.645 15.513 17.567C16.113 17.48 17.365 16.812 17.63 16.079C17.895 15.347 17.895 14.718 17.789 14.588C17.683 14.456 17.472 14.382 17.472 14.382ZM11.996 22H11.992C10.301 22 8.653 21.545 7.211 20.697L6.877 20.499L3.528 21.378L4.425 18.106L4.207 17.76C3.275 16.279 2.784 14.536 2.784 12.753C2.784 7.667 6.921 3.531 12.008 3.531C14.475 3.531 16.786 4.492 18.529 6.236C20.272 7.978 21.233 10.288 21.233 12.758C21.231 17.842 17.094 22 11.996 22ZM20.088 4.667C17.925 2.5 15.056 1.306 12.003 1.306C5.69 1.306 0.551 6.444 0.551 12.756C0.551 14.774 1.077 16.735 2.059 18.455L0 26L7.697 23.982C9.352 24.877 11.187 25.352 12.046 25.352H12.052C18.365 25.352 23.504 20.213 23.504 13.903C23.504 10.849 22.316 7.979 20.088 4.667Z"/>
+                      </svg>
+                      <span>Enquire on WhatsApp</span>
+                    </button>
+                  </div>
+                </article>
+              ))}
+            </div>
           </div>
         </div>
       </section>
