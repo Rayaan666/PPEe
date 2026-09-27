@@ -12,7 +12,8 @@
     { "source": "/corporate-event-organizers-for-memorable-business-events", "destination": "/corporate-events/", "permanent": true },
     { "source": "/a-glimpse-into-luxury-parties-and-vip-experiences", "destination": "/services/corporate-gala-events-abu-dhabi/", "permanent": true },
     { "source": "/corporate-events-planner-for-memorable-team-events", "destination": "/corporate-events/", "permanent": true },
-    { "source": "/the-ultimate-social-event-planning-checklist", "destination": "/services/theme-decoration-private-events-abu-dhabi/", "permanent": true }
+    { "source": "/the-ultimate-social-event-planning-checklist", "destination": "/services/theme-decoration-private-events-abu-dhabi/", "permanent": true },
+    { "source": "/services/private-celebrations", "destination": "/services/theme-decoration-private-events-abu-dhabi/", "permanent": true }
   ],
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }

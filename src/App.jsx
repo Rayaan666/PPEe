@@ -52,6 +52,9 @@ export function AppContent() {
           <Route path="/services/corporate-conference-organizer-abu-dhabi" element={<CorporateConferences />} />
           <Route path="/services/brand-activation-agency-abu-dhabi" element={<BrandActivations />} />
           <Route path="/services/theme-decoration-private-events-abu-dhabi" element={<PrivateCelebrations />} />
+          <Route path="/services/theme-decoration-private-events-abu-dhabi/" element={<PrivateCelebrations />} />
+          <Route path="/services/private-celebrations-abu-dhabi" element={<PrivateCelebrations />} />
+          <Route path="/services/private-celebrations-abu-dhabi/" element={<PrivateCelebrations />} />
 
           {/* SEO Landers */}
           <Route path="/event-management-company" element={<EventManagementCompany />} />

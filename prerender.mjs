@@ -28,6 +28,7 @@ const routes = [
   '/services/corporate-conference-organizer-abu-dhabi/',
   '/services/brand-activation-agency-abu-dhabi/',
   '/services/theme-decoration-private-events-abu-dhabi/',
+  '/services/private-celebrations-abu-dhabi/',
   '/how-to-design-the-best-creative-event-concept/',
   '/the-complete-corporate-event-planning-checklist-for-the-uae-2026/',
   '/how-to-choose-the-right-event-management-companies/'
