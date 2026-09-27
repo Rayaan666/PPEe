@@ -18,6 +18,8 @@ import EventOrganizers from './pages/EventOrganizers';
 import BlogCreativeConcept from './pages/BlogCreativeConcept';
 import BlogPlanningChecklist from './pages/BlogPlanningChecklist';
 import BlogChoosingCompany from './pages/BlogChoosingCompany';
+import BlogListing from './pages/BlogListing';
+import BlogPostExhibitionDubai from './pages/BlogPostExhibitionDubai';
 
 // New Dedicated Service Pages
 import ExhibitionStands from './pages/services/ExhibitionStands';
@@ -87,10 +89,16 @@ export function AppContent() {
           <Route path="/how-to-choose-the-right-event-management-companies" element={<BlogChoosingCompany />} />
           <Route path="/how-to-choose-the-right-event-management-companies/" element={<BlogChoosingCompany />} />
 
+          {/* Official Blog System */}
+          <Route path="/blog" element={<BlogListing />} />
+          <Route path="/blog/" element={<BlogListing />} />
+          <Route path="/blog/exhibition-stand-design-companies-dubai" element={<BlogPostExhibitionDubai />} />
+          <Route path="/blog/exhibition-stand-design-companies-dubai/" element={<BlogPostExhibitionDubai />} />
+
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/gallery/" element={<Gallery />} />
-          <Route path="/blogs" element={<Blogs />} />
-          <Route path="/blogs/" element={<Blogs />} />
+          <Route path="/blogs" element={<BlogListing />} />
+          <Route path="/blogs/" element={<BlogListing />} />
           <Route path="/rentals" element={<Rentals />} />
           <Route path="/rentals/" element={<Rentals />} />
           <Route path="/contact-us" element={<Contact />} />

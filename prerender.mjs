@@ -31,7 +31,9 @@ const routes = [
   '/services/private-celebrations-abu-dhabi/',
   '/how-to-design-the-best-creative-event-concept/',
   '/the-complete-corporate-event-planning-checklist-for-the-uae-2026/',
-  '/how-to-choose-the-right-event-management-companies/'
+  '/how-to-choose-the-right-event-management-companies/',
+  '/blog/',
+  '/blog/exhibition-stand-design-companies-dubai/'
 ];
 
 const skipClientBuild = process.argv.includes('--skip-client-build');
