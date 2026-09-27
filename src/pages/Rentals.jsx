@@ -283,15 +283,57 @@ const Rentals = () => {
     return true;
   });
 
+  const [openFaq, setOpenFaq] = useState(0);
+
+  const toggleFaq = (index) => {
+    setOpenFaq(prev => prev === index ? null : index);
+  };
+
+  const rentalFaqs = [
+    {
+      question: 'Where can I rent event furniture and equipment in Abu Dhabi?',
+      answer: 'Perfect Party Events provides event furniture, party equipment, and live food stations for corporate events, private celebrations, and exhibitions across Abu Dhabi and the UAE.'
+    },
+    {
+      question: 'What types of event rental products are available?',
+      answer: 'Our rental collection includes event furniture, equipment, ice cream machines, popcorn stations, cotton candy stations, and a variety of interactive food and hospitality experiences.'
+    },
+    {
+      question: 'Can I book live food stations for corporate events?',
+      answer: 'Yes. Perfect Party Events offers live food stations for corporate gatherings, brand activations, exhibitions, and private celebrations, with options including ice cream, popcorn, mini pancakes, and more.'
+    },
+    {
+      question: 'How can I enquire about event rentals in Abu Dhabi?',
+      answer: 'Browse our rental collection and select your preferred product. Click the WhatsApp enquiry button to contact our team directly for availability, event requirements, and further details.'
+    }
+  ];
+
   const rentalsStructuredData = {
     '@context': 'https://schema.org',
-    '@type': 'WebPage',
-    name: 'Event Rentals & Live Food Stations Abu Dhabi | Perfect Party Events',
-    description: 'Explore event rentals, party furniture, equipment and live food stations in Abu Dhabi. Enquire with Perfect Party Events for your next event.',
-    url: 'https://perfectpartyeventsae.com/rentals/',
-    publisher: {
-      '@id': 'https://perfectpartyeventsae.com/#organization'
-    }
+    '@graph': [
+      {
+        '@type': 'WebPage',
+        '@id': 'https://perfectpartyeventsae.com/rentals/#webpage',
+        url: 'https://perfectpartyeventsae.com/rentals/',
+        name: 'Event Rentals & Live Food Stations Abu Dhabi | Perfect Party Events',
+        description: 'Explore event rentals, party furniture, equipment and live food stations in Abu Dhabi. Enquire with Perfect Party Events for your next event.',
+        publisher: {
+          '@id': 'https://perfectpartyeventsae.com/#organization'
+        }
+      },
+      {
+        '@type': 'FAQPage',
+        '@id': 'https://perfectpartyeventsae.com/rentals/#faq',
+        mainEntity: rentalFaqs.map((faq) => ({
+          '@type': 'Question',
+          name: faq.question,
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: faq.answer
+          }
+        }))
+      }
+    ]
   };
 
   return (
@@ -469,6 +511,54 @@ const Rentals = () => {
                   </div>
                 </article>
               ))}
+            </div>
+          </div>
+
+          {/* COMPACT EDITORIAL FAQ AREA */}
+          <div className="rentals-faq-section" id="faq">
+            <div className="rentals-faq-header">
+              <span className="section-label">FAQS</span>
+              <h2 className="rentals-faq-title">Frequently Asked Questions</h2>
+            </div>
+
+            <div className="rentals-faq-accordion">
+              {rentalFaqs.map((faq, index) => {
+                const isOpen = openFaq === index;
+                return (
+                  <div 
+                    key={faq.question} 
+                    className={`rentals-faq-item ${isOpen ? 'is-open' : ''}`}
+                  >
+                    <h3 className="rentals-faq-question-heading">
+                      <button
+                        type="button"
+                        className="rentals-faq-trigger"
+                        onClick={() => toggleFaq(index)}
+                        aria-expanded={isOpen}
+                        aria-controls={`rentals-faq-answer-${index}`}
+                        id={`rentals-faq-question-${index}`}
+                      >
+                        <span className="rentals-faq-question-text">{faq.question}</span>
+                        <span className="rentals-faq-chevron" aria-hidden="true">
+                          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                            <polyline points="6 9 12 15 18 9" />
+                          </svg>
+                        </span>
+                      </button>
+                    </h3>
+                    <div
+                      id={`rentals-faq-answer-${index}`}
+                      role="region"
+                      aria-labelledby={`rentals-faq-question-${index}`}
+                      className={`rentals-faq-answer-pane ${isOpen ? 'is-open' : ''}`}
+                    >
+                      <div className="rentals-faq-answer-inner">
+                        <p>{faq.answer}</p>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>

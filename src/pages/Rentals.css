@@ -484,3 +484,150 @@
     height: 190px;
   }
 }
+
+/* ==========================================================================
+   COMPACT EDITORIAL FAQ AREA (AEO & ANSWER ENGINE OPTIMIZATION)
+   ========================================================================== */
+.rentals-faq-section {
+  margin-top: clamp(4.5rem, 8vw, 7rem);
+  padding: 0 1rem;
+  max-width: 920px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.rentals-faq-header {
+  text-align: center;
+  margin-bottom: clamp(2rem, 3.5vw, 3rem);
+}
+
+.rentals-faq-header .section-label {
+  display: block;
+  font-family: var(--font-body, sans-serif);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--color-rose-gold, #c9888d);
+  margin-bottom: 0.6rem;
+}
+
+.rentals-faq-title {
+  font-family: var(--font-primary);
+  font-size: clamp(2rem, 3.2vw, 2.75rem);
+  font-weight: 300;
+  letter-spacing: 0.5px;
+  color: var(--color-dark-charcoal, #2b2b2b);
+  margin: 0;
+  line-height: 1.15;
+}
+
+.rentals-faq-accordion {
+  border-top: 1px solid rgba(201, 136, 141, 0.28);
+}
+
+.rentals-faq-item {
+  border-bottom: 1px solid rgba(201, 136, 141, 0.22);
+  transition: border-color 0.25s ease;
+}
+
+.rentals-faq-question-heading {
+  margin: 0;
+  padding: 0;
+  font-size: 1rem;
+  font-weight: normal;
+}
+
+.rentals-faq-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: left;
+  background: transparent;
+  border: none;
+  padding: clamp(1.2rem, 2vw, 1.55rem) 0.5rem;
+  cursor: pointer;
+  color: var(--color-dark-charcoal, #2b2b2b);
+  font-family: var(--font-subheading, serif);
+  font-size: clamp(1.08rem, 1.35vw, 1.25rem);
+  font-weight: 400;
+  line-height: 1.45;
+  transition: color 0.25s ease;
+}
+
+.rentals-faq-trigger:hover {
+  color: var(--color-dusty-rose, #b86b72);
+}
+
+.rentals-faq-trigger:focus-visible {
+  outline: 2px solid var(--color-rose-gold, #c9888d);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.rentals-faq-question-text {
+  flex: 1;
+  padding-right: 1.25rem;
+}
+
+.rentals-faq-chevron {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(201, 136, 141, 0.08);
+  color: var(--color-rose-gold, #c9888d);
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.25s ease, color 0.25s ease;
+}
+
+.rentals-faq-item.is-open .rentals-faq-chevron {
+  transform: rotate(180deg);
+  background: rgba(201, 136, 141, 0.18);
+  color: var(--color-dusty-rose, #b86b72);
+}
+
+.rentals-faq-answer-pane {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+  opacity: 0;
+}
+
+.rentals-faq-answer-pane.is-open {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+
+.rentals-faq-answer-inner {
+  overflow: hidden;
+}
+
+.rentals-faq-answer-inner p {
+  margin: 0;
+  padding: 0 0.5rem clamp(1.2rem, 2vw, 1.6rem);
+  font-family: var(--font-body, sans-serif);
+  font-size: clamp(0.92rem, 1.05vw, 1rem);
+  line-height: 1.75;
+  color: rgba(43, 43, 43, 0.78);
+  max-width: 820px;
+}
+
+@media (max-width: 640px) {
+  .rentals-faq-section {
+    margin-top: 3.5rem;
+    padding: 0 0.5rem;
+  }
+
+  .rentals-faq-trigger {
+    padding: 1.1rem 0.25rem;
+  }
+
+  .rentals-faq-answer-inner p {
+    padding: 0 0.25rem 1.1rem;
+  }
+}
+
