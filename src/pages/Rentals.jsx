@@ -317,6 +317,8 @@ const Rentals = () => {
         url: 'https://perfectpartyeventsae.com/rentals/',
         name: 'Event Rentals & Live Food Stations Abu Dhabi | Perfect Party Events',
         description: 'Explore event rentals, party furniture, equipment and live food stations in Abu Dhabi. Enquire with Perfect Party Events for your next event.',
+        datePublished: '2026-08-22',
+        dateModified: '2026-09-27',
         publisher: {
           '@id': 'https://perfectpartyeventsae.com/#organization'
         }
