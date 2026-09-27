@@ -68,9 +68,15 @@ export function AppContent() {
           <Route path="/how-to-choose-the-right-event-management-companies/" element={<BlogChoosingCompany />} />
 
           <Route path="/gallery" element={<Gallery />} />
+          <Route path="/gallery/" element={<Gallery />} />
           <Route path="/blogs" element={<Blogs />} />
+          <Route path="/blogs/" element={<Blogs />} />
           <Route path="/rentals" element={<Rentals />} />
+          <Route path="/rentals/" element={<Rentals />} />
           <Route path="/contact-us" element={<Contact />} />
+          <Route path="/contact-us/" element={<Contact />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/contact/" element={<Contact />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
