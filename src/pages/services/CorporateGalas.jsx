@@ -183,12 +183,7 @@ const CorporateGalas = () => {
         '@id': `${canonicalUrl}#service`,
         name: 'Corporate Gala Event Management Abu Dhabi',
         serviceType: 'Corporate gala event management',
-        provider: {
-          '@type': 'LocalBusiness',
-          name: 'Perfect Party Events',
-          url: 'https://perfectpartyeventsae.com/',
-          image: 'https://perfectpartyeventsae.com/logo.png',
-        },
+        provider: { '@id': 'https://perfectpartyeventsae.com/#organization' },
         areaServed: ['Abu Dhabi', 'Dubai', 'United Arab Emirates'],
         url: canonicalUrl,
         description:

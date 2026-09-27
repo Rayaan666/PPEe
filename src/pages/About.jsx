@@ -9,48 +9,13 @@ gsap.registerPlugin(ScrollTrigger);
 
 const aboutStructuredData = {
   '@context': 'https://schema.org',
-  '@type': 'LocalBusiness',
-  name: 'Perfect Party Events',
-  image: 'https://perfectpartyeventsae.com/about/hero.png',
-  '@id': 'https://perfectpartyeventsae.com/about',
-  url: 'https://perfectpartyeventsae.com/about',
-  telephone: 'info@perfectpartyeventsae.com',
-  priceRange: '$$$$',
-  address: {
-    '@type': 'PostalAddress',
-    streetAddress: 'Plot 3, ME 40, Musaffah',
-    addressLocality: 'Abu Dhabi',
-    addressRegion: 'Abu Dhabi',
-    postalCode: '00000',
-    addressCountry: 'AE'
-  },
-  geo: {
-    '@type': 'GeoCoordinates',
-    latitude: 24.35,
-    longitude: 54.51
-  },
-  openingHoursSpecification: {
-    '@type': 'OpeningHoursSpecification',
-    dayOfWeek: [
-      'Monday',
-      'Tuesday',
-      'Wednesday',
-      'Thursday',
-      'Friday',
-      'Saturday',
-      'Sunday'
-    ],
-    opens: '09:00',
-    closes: '21:00'
-  },
-  sameAs: [
-    'https://www.instagram.com/perfectpartyevents/'
-  ],
-  areaServed: [
-    { '@type': 'City', name: 'Abu Dhabi' },
-    { '@type': 'City', name: 'Dubai' },
-    { '@type': 'Country', name: 'United Arab Emirates' }
-  ]
+  '@type': 'AboutPage',
+  name: 'About Perfect Party Events',
+  description: 'Learn about Perfect Party Events, premier luxury event management and event styling company in Abu Dhabi and Dubai.',
+  url: 'https://perfectpartyeventsae.com/about-us/',
+  mainEntity: {
+    '@id': 'https://perfectpartyeventsae.com/#organization'
+  }
 };
 
 const About = () => {

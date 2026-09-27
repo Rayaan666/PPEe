@@ -120,25 +120,9 @@ const Contact = () => {
     '@type': 'ContactPage',
     name: 'Contact Perfect Party Events',
     description: 'Contact Perfect Party Events for luxury private celebrations, corporate events, exhibitions, product launches, conferences and brand activations across Abu Dhabi, Dubai and the UAE.',
-    url: 'https://perfectpartyeventsae.com/contact',
+    url: 'https://perfectpartyeventsae.com/contact-us/',
     mainEntity: {
-      '@type': 'LocalBusiness',
-      name: 'Perfect Party Events',
-      image: 'https://perfectpartyeventsae.com/logo.png',
-      email: 'info@perfectpartyeventsae.com',
-      address: {
-        '@type': 'PostalAddress',
-        streetAddress: 'Plot 3, ME 40, Musaffah',
-        addressLocality: 'Abu Dhabi',
-        addressRegion: 'Abu Dhabi',
-        addressCountry: 'AE'
-      },
-      openingHoursSpecification: {
-        '@type': 'OpeningHoursSpecification',
-        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
-        opens: '09:00',
-        closes: '21:00'
-      }
+      '@id': 'https://perfectpartyeventsae.com/#organization'
     }
   };
 

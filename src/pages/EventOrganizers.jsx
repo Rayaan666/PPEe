@@ -8,9 +8,7 @@ const eventOrganizerSchema = {
   '@type': 'Service',
   name: 'Professional Event Organizers',
   provider: {
-    '@type': 'LocalBusiness',
-    name: 'Perfect Party Events',
-    url: 'https://perfectpartyeventsae.com/'
+    '@id': 'https://perfectpartyeventsae.com/#organization'
   },
   areaServed: [
     { '@type': 'City', name: 'Abu Dhabi' },

@@ -290,8 +290,7 @@ const Rentals = () => {
     description: 'Explore event rentals, party furniture, equipment and live food stations in Abu Dhabi. Enquire with Perfect Party Events for your next event.',
     url: 'https://perfectpartyeventsae.com/rentals/',
     publisher: {
-      '@type': 'Organization',
-      name: 'Perfect Party Events'
+      '@id': 'https://perfectpartyeventsae.com/#organization'
     }
   };
 

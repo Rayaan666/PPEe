@@ -65,7 +65,7 @@ const PrivateCelebrations = () => {
       {
         "@type": "Service",
         "name": "Private Event Planning and Theme Decoration Abu Dhabi",
-        "provider": { "@type": "EventVenue", "name": "Perfect Party Events" },
+        "provider": { "@id": "https://perfectpartyeventsae.com/#organization" },
         "description": "Bespoke private event planning and theme decoration in Abu Dhabi for birthdays, engagements, dinners, family celebrations, and special occasions.",
         "areaServed": "Abu Dhabi"
       }

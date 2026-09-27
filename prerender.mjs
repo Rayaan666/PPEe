@@ -70,7 +70,12 @@ async function prerender() {
     }
 
     // Insert head tags before </head> and body HTML inside <div id="root"></div>
-    let pageHtml = template.replace(/<!-- SEO Meta Tags.*-->/i, headTags);
+    let pageHtml = template;
+    if (/<!-- SEO Meta Tags.*-->/i.test(template)) {
+      pageHtml = template.replace(/<!-- SEO Meta Tags.*-->/i, headTags);
+    } else {
+      pageHtml = template.replace('</head>', `${headTags}\n</head>`);
+    }
     pageHtml = pageHtml.replace(/<div\s+id="?root"?\s*><\/div>/i, `<div id="root">${html}</div>`);
 
     // Determine target output file path

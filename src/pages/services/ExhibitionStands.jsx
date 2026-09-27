@@ -217,19 +217,11 @@ const ExhibitionStands = () => {
         ],
       },
       {
-        '@type': 'LocalBusiness',
-        '@id': 'https://perfectpartyeventsae.com/#localbusiness',
-        name: 'Perfect Party Events',
-        url: 'https://perfectpartyeventsae.com/',
-        image: 'https://perfectpartyeventsae.com/logo.png',
-        areaServed: ['Abu Dhabi', 'Dubai', 'United Arab Emirates'],
-      },
-      {
         '@type': 'Service',
         '@id': `${canonicalUrl}#service`,
         name: 'Exhibition Stand Design Abu Dhabi',
         serviceType: 'Exhibition stand design and build',
-        provider: { '@id': 'https://perfectpartyeventsae.com/#localbusiness' },
+        provider: { '@id': 'https://perfectpartyeventsae.com/#organization' },
         areaServed: ['Abu Dhabi', 'Dubai', 'United Arab Emirates'],
         url: canonicalUrl,
         description:

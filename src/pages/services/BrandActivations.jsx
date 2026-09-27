@@ -236,12 +236,7 @@ const BrandActivations = () => {
         '@id': `${canonicalUrl}#service`,
         name: 'Brand Activation Agency Abu Dhabi',
         serviceType: 'Brand activation and experiential marketing',
-        provider: {
-          '@type': 'LocalBusiness',
-          name: 'Perfect Party Events',
-          url: 'https://perfectpartyeventsae.com/',
-          image: 'https://perfectpartyeventsae.com/logo.png',
-        },
+        provider: { '@id': 'https://perfectpartyeventsae.com/#organization' },
         areaServed: ['Abu Dhabi', 'Dubai', 'United Arab Emirates'],
         url: canonicalUrl,
         description:

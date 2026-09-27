@@ -9,53 +9,29 @@ gsap.registerPlugin(ScrollTrigger);
 
 const homeStructuredData = {
   '@context': 'https://schema.org',
-  '@graph': [
-    {
-      '@type': 'Organization',
-      '@id': 'https://perfectpartyeventsae.com/#organization',
-      name: 'Perfect Party Events',
-      url: 'https://perfectpartyeventsae.com/',
-      logo: 'https://perfectpartyeventsae.com/logo.png',
-      email: 'info@perfectpartyeventsae.com',
-      description: 'Luxury event management, private event planning, event styling, and corporate event production across Abu Dhabi and Dubai, UAE.',
-      address: {
-        '@type': 'PostalAddress',
-        streetAddress: 'Plot 3, ME 40, Musaffah',
-        addressLocality: 'Abu Dhabi',
-        addressCountry: 'AE',
-      },
-      areaServed: [
-        { '@type': 'City', name: 'Dubai' },
-        { '@type': 'City', name: 'Abu Dhabi' },
-        { '@type': 'Country', name: 'United Arab Emirates' },
-      ],
+  '@type': 'ItemList',
+  '@id': 'https://perfectpartyeventsae.com/#event-services',
+  name: 'Luxury Event Management Services in the UAE',
+  numberOfItems: 5,
+  itemListElement: [
+    ['Luxury Private Event Planning & Design', 'Bespoke private celebrations, themed experiences, venue selection, floral styling, and full-scale event production in Abu Dhabi and Dubai.', '/home/1.png'],
+    ['Corporate Galas & Awards Production', 'Corporate gala, awards ceremony, stage design, audio-visual production, and VIP hospitality services across the UAE.', '/home/2.png'],
+    ['Bespoke Product Launch Events', 'Experiential product launches, media styling, technical staging, and branded event environments in the UAE.', '/home/3.png'],
+    ['Corporate Conferences & Summits', 'End-to-end conference and summit management, AV logistics, live streaming, interpretation, and registration in Dubai and Abu Dhabi.', '/home/4.png'],
+    ['Experiential Brand Activations', 'Interactive brand activations, luxury pop-ups, retail installations, and consumer experiences across the Emirates.', '/home/5.png'],
+  ].map(([name, description, image], index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    item: {
+      '@type': 'Service',
+      name,
+      description,
+      image: `https://perfectpartyeventsae.com${image}`,
+      url: 'https://perfectpartyeventsae.com/services',
+      provider: { '@id': 'https://perfectpartyeventsae.com/#organization' },
+      areaServed: ['Dubai', 'Abu Dhabi', 'United Arab Emirates'],
     },
-    {
-      '@type': 'ItemList',
-      '@id': 'https://perfectpartyeventsae.com/#event-services',
-      name: 'Luxury Event Management Services in the UAE',
-      numberOfItems: 5,
-      itemListElement: [
-        ['Luxury Private Event Planning & Design', 'Bespoke private celebrations, themed experiences, venue selection, floral styling, and full-scale event production in Abu Dhabi and Dubai.', '/home/1.png'],
-        ['Corporate Galas & Awards Production', 'Corporate gala, awards ceremony, stage design, audio-visual production, and VIP hospitality services across the UAE.', '/home/2.png'],
-        ['Bespoke Product Launch Events', 'Experiential product launches, media styling, technical staging, and branded event environments in the UAE.', '/home/3.png'],
-        ['Corporate Conferences & Summits', 'End-to-end conference and summit management, AV logistics, live streaming, interpretation, and registration in Dubai and Abu Dhabi.', '/home/4.png'],
-        ['Experiential Brand Activations', 'Interactive brand activations, luxury pop-ups, retail installations, and consumer experiences across the Emirates.', '/home/5.png'],
-      ].map(([name, description, image], index) => ({
-        '@type': 'ListItem',
-        position: index + 1,
-        item: {
-          '@type': 'Service',
-          name,
-          description,
-          image: `https://perfectpartyeventsae.com${image}`,
-          url: 'https://perfectpartyeventsae.com/services',
-          provider: { '@id': 'https://perfectpartyeventsae.com/#organization' },
-          areaServed: ['Dubai', 'Abu Dhabi', 'United Arab Emirates'],
-        },
-      })),
-    },
-  ],
+  })),
 };
 
 const Home = () => {
