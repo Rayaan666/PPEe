@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
+import { trackWhatsAppEnquiry } from '../utils/analytics';
 import './Rentals.css';
 
 const Rentals = () => {
@@ -38,12 +39,22 @@ const Rentals = () => {
   ];
 
   const handleWhatsAppEnquiry = (productName) => {
+    trackWhatsAppEnquiry({
+      product_name: productName,
+      product_category: 'Event Furniture & Equipment',
+      page_path: typeof window !== 'undefined' ? window.location.pathname : '/rentals/'
+    });
     const phoneNumber = '971501045227';
     const message = encodeURIComponent(`Hi Perfect Party Events, I’m interested in renting the ${productName}. Could you please share availability and details?`);
     window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
   };
 
-  const handleFoodWhatsAppEnquiry = (productName) => {
+  const handleFoodWhatsAppEnquiry = (productName, category = 'Live Food Station') => {
+    trackWhatsAppEnquiry({
+      product_name: productName,
+      product_category: category,
+      page_path: typeof window !== 'undefined' ? window.location.pathname : '/rentals/'
+    });
     const phoneNumber = '971501045227';
     const message = encodeURIComponent(`Hi Perfect Party Events, I’m interested in the ${productName} for my event. Could you please share availability and details?`);
     window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
@@ -414,14 +425,14 @@ const Rentals = () => {
                 >
                   <div 
                     className="food-card-media"
-                    onClick={() => handleFoodWhatsAppEnquiry(item.name)}
+                    onClick={() => handleFoodWhatsAppEnquiry(item.name, item.category)}
                     role="button"
                     tabIndex={0}
                     aria-label={`Get details for ${item.name}`}
                     onKeyDown={(e) => {
                       if (e.key === 'Enter' || e.key === ' ') {
                         e.preventDefault();
-                        handleFoodWhatsAppEnquiry(item.name);
+                        handleFoodWhatsAppEnquiry(item.name, item.category);
                       }
                     }}
                   >
@@ -448,7 +459,7 @@ const Rentals = () => {
                     <p className="food-card-desc">{item.subtitle}</p>
                     <button 
                       className="food-card-action-btn"
-                      onClick={() => handleFoodWhatsAppEnquiry(item.name)}
+                      onClick={() => handleFoodWhatsAppEnquiry(item.name, item.category)}
                       aria-label={`Request quote for ${item.name}`}
                     >
                       <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">

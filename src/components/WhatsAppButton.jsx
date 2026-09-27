@@ -1,10 +1,19 @@
 import React from 'react';
+import { trackWhatsAppEnquiry } from '../utils/analytics';
 import './WhatsAppButton.css';
 
 const WhatsAppButton = () => {
   const phone = '971501045227';
   const message = encodeURIComponent('Hello! I\'d like to enquire about your event services.');
   const href = `https://wa.me/${phone}?text=${message}`;
+
+  const handleClick = () => {
+    trackWhatsAppEnquiry({
+      product_name: 'General Enquiry',
+      product_category: 'General Event Services',
+      page_path: typeof window !== 'undefined' ? window.location.pathname : '',
+    });
+  };
 
   return (
     <a
@@ -13,6 +22,7 @@ const WhatsAppButton = () => {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Chat with us on WhatsApp"
+      onClick={handleClick}
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"

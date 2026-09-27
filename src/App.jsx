@@ -1,5 +1,5 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -30,10 +30,27 @@ import PrivateCelebrations from './pages/services/PrivateCelebrations';
 import ScrollToTop from './components/ScrollToTop';
 import WhatsAppButton from './components/WhatsAppButton';
 import ScrollToTopButton from './components/ScrollToTopButton';
+import { trackPageView } from './utils/analytics';
+
+function AnalyticsTracker() {
+  const location = useLocation();
+
+  useEffect(() => {
+    // Delay slightly to let React Helmet Async update document.title
+    const timer = setTimeout(() => {
+      trackPageView(location.pathname + location.search, document.title);
+    }, 100);
+
+    return () => clearTimeout(timer);
+  }, [location.pathname, location.search]);
+
+  return null;
+}
 
 export function AppContent() {
   return (
     <div className="app-container">
+      <AnalyticsTracker />
       <ScrollToTop />
       <CustomCursor />
       <Navbar />

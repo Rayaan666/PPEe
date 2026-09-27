@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { trackLead } from '../utils/analytics';
 import './Contact.css';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -100,6 +101,10 @@ const Contact = () => {
     setTimeout(() => {
       if(formData.name && formData.email) {
         setFormStatus('success');
+        trackLead({
+          event_type: formData.eventType || 'General Event Enquiry',
+          method: 'contact_form'
+        });
         setFormData({
           name: '', email: '', phone: '', eventType: '', 
           location: '', date: '', guests: '', message: ''
