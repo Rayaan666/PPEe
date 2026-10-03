@@ -1,5 +1,20 @@
 export const blogPosts = [
   {
+    id: 'corporate-event-food-station-packages',
+    slug: 'corporate-event-food-station-packages',
+    path: '/blog/corporate-event-food-station-packages/',
+    title: 'Corporate Event Food Station Packages',
+    date: '3rd October 2026',
+    dateIso: '2026-10-03',
+    author: 'Business',
+    editor: 'Fareeha',
+    featuredImage: '/blog/corporate-event-food-stations.jpg',
+    imageAlt: 'Corporate Event Food Station Packages in Abu Dhabi and UAE',
+    excerpt: 'Premium catering and live food stations for exhibitions, galas, product launches, and conferences across Abu Dhabi and the UAE.',
+    category: 'Corporate Catering',
+    readTime: '5 min read'
+  },
+  {
     id: 'exhibition-stand-design-companies-dubai',
     slug: 'exhibition-stand-design-companies-dubai',
     path: '/blog/exhibition-stand-design-companies-dubai/',

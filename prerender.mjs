@@ -33,7 +33,8 @@ const routes = [
   '/the-complete-corporate-event-planning-checklist-for-the-uae-2026/',
   '/how-to-choose-the-right-event-management-companies/',
   '/blog/',
-  '/blog/exhibition-stand-design-companies-dubai/'
+  '/blog/exhibition-stand-design-companies-dubai/',
+  '/blog/corporate-event-food-station-packages/'
 ];
 
 const skipClientBuild = process.argv.includes('--skip-client-build');
