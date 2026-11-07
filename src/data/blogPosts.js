@@ -1,5 +1,20 @@
 export const blogPosts = [
   {
+    id: 'outdoor-event-rentals-abu-dhabi-open-air-venues',
+    slug: 'outdoor-event-rentals-abu-dhabi-open-air-venues',
+    path: '/blog/outdoor-event-rentals-abu-dhabi-open-air-venues/',
+    title: 'Outdoor Event Rentals for Abu Dhabi Open-Air Venues',
+    date: '4th October 2026',
+    dateIso: '2026-10-04',
+    author: 'Business',
+    editor: 'Fareeha',
+    featuredImage: '/blog/outdoor-event-rentals-abu-dhabi.jpg',
+    imageAlt: 'Luxury outdoor event rentals and furniture setup for open-air venues in Abu Dhabi UAE',
+    excerpt: 'Plan confident outdoor events with rentals, coordination, and installation support across Abu Dhabi and the UAE.',
+    category: 'Event Rentals',
+    readTime: '5 min read'
+  },
+  {
     id: 'corporate-event-food-station-packages',
     slug: 'corporate-event-food-station-packages',
     path: '/blog/corporate-event-food-station-packages/',

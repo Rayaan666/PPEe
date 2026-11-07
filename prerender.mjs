@@ -34,7 +34,8 @@ const routes = [
   '/how-to-choose-the-right-event-management-companies/',
   '/blog/',
   '/blog/exhibition-stand-design-companies-dubai/',
-  '/blog/corporate-event-food-station-packages/'
+  '/blog/corporate-event-food-station-packages/',
+  '/blog/outdoor-event-rentals-abu-dhabi-open-air-venues/'
 ];
 
 const skipClientBuild = process.argv.includes('--skip-client-build');
@@ -54,7 +55,13 @@ async function prerender() {
   console.log('Loading SSR bundle...');
   const { render } = await import(`file://${SERVER_ENTRY}`);
   
-  const template = await fs.readFile(path.join(DIST_DIR, 'index.html'), 'utf-8');
+  let rawTemplate = await fs.readFile(path.join(DIST_DIR, 'index.html'), 'utf-8');
+  // Strip any pre-existing SSR head tags and body content to obtain clean template shell
+  const template = rawTemplate
+    .replace(/<title>[\s\S]*?<\/title>/gi, '')
+    .replace(/<meta\s+name=["']description["'][\s\S]*?>/gi, '')
+    .replace(/<link\s+rel=["']canonical["'][\s\S]*?>/gi, '')
+    .replace(/<div\s+id="?root"?\s*>[\s\S]*<\/div>\s*<\/body>/i, '<div id="root"></div></body>');
 
   for (const route of routes) {
     console.log(`Prerendering route (SSR): ${route}`);
@@ -72,6 +79,31 @@ async function prerender() {
       headTags += helmet.script.toString() + '\n';
     }
 
+    let renderedHtml = html;
+    if (route === '/privacy-policy/' || route === '/terms-conditions/') {
+      // In React 19 SSR, document metadata (<title>, <meta>, <link>) is rendered into body/root HTML.
+      // Move metadata elements into <head> so SEO meta description is in the initial server-rendered HTML head.
+      const extracted = [];
+      const titleMatch = renderedHtml.match(/<title[^>]*>[\s\S]*?<\/title>/i);
+      if (titleMatch) {
+        extracted.push(titleMatch[0]);
+        renderedHtml = renderedHtml.replace(titleMatch[0], '');
+      }
+      const metaMatches = renderedHtml.match(/<meta[^>]*>/gi) || [];
+      for (const m of metaMatches) {
+        extracted.push(m);
+        renderedHtml = renderedHtml.replace(m, '');
+      }
+      const canonicalMatch = renderedHtml.match(/<link[^>]*rel=["']canonical["'][^>]*>/i);
+      if (canonicalMatch) {
+        extracted.push(canonicalMatch[0]);
+        renderedHtml = renderedHtml.replace(canonicalMatch[0], '');
+      }
+      if (extracted.length > 0) {
+        headTags = extracted.join('\n') + '\n';
+      }
+    }
+
     // Insert head tags before </head> and body HTML inside <div id="root"></div>
     let pageHtml = template;
     if (/<!-- SEO Meta Tags.*-->/i.test(template)) {
@@ -79,7 +111,7 @@ async function prerender() {
     } else {
       pageHtml = template.replace('</head>', `${headTags}\n</head>`);
     }
-    pageHtml = pageHtml.replace(/<div\s+id="?root"?\s*><\/div>/i, `<div id="root">${html}</div>`);
+    pageHtml = pageHtml.replace(/<div\s+id="?root"?\s*><\/div>/i, `<div id="root">${renderedHtml}</div>`);
 
     // Determine target output file path
     let filePath = path.join(DIST_DIR, route);

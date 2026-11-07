@@ -21,6 +21,9 @@ import BlogChoosingCompany from './pages/BlogChoosingCompany';
 import BlogListing from './pages/BlogListing';
 import BlogPostExhibitionDubai from './pages/BlogPostExhibitionDubai';
 import BlogPostFoodStations from './pages/BlogPostFoodStations';
+import BlogPostOutdoorRentals from './pages/BlogPostOutdoorRentals';
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import TermsConditions from './pages/TermsConditions';
 
 // New Dedicated Service Pages
 import ExhibitionStands from './pages/services/ExhibitionStands';
@@ -97,6 +100,8 @@ export function AppContent() {
           <Route path="/blog/exhibition-stand-design-companies-dubai/" element={<BlogPostExhibitionDubai />} />
           <Route path="/blog/corporate-event-food-station-packages" element={<BlogPostFoodStations />} />
           <Route path="/blog/corporate-event-food-station-packages/" element={<BlogPostFoodStations />} />
+          <Route path="/blog/outdoor-event-rentals-abu-dhabi-open-air-venues" element={<BlogPostOutdoorRentals />} />
+          <Route path="/blog/outdoor-event-rentals-abu-dhabi-open-air-venues/" element={<BlogPostOutdoorRentals />} />
 
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/gallery/" element={<Gallery />} />
@@ -108,6 +113,10 @@ export function AppContent() {
           <Route path="/contact-us/" element={<Contact />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/contact/" element={<Contact />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/privacy-policy/" element={<PrivacyPolicy />} />
+          <Route path="/terms-conditions" element={<TermsConditions />} />
+          <Route path="/terms-conditions/" element={<TermsConditions />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
