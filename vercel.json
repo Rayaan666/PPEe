@@ -1,6 +1,17 @@
 {
   "cleanUrls": true,
   "trailingSlash": true,
+  "headers": [
+    {
+      "source": "/assets/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    }
+  ],
   "redirects": [
     { "source": "/top-corporate-event-organizers-and-corporate-events-planner", "destination": "/corporate-events/", "permanent": true },
     { "source": "/services/corporate-events", "destination": "/corporate-events/", "permanent": true },
