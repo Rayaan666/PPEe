@@ -1,5 +1,20 @@
 export const blogPosts = [
   {
+    id: 'uae-national-day-event-planning-abu-dhabi-dubai',
+    slug: 'uae-national-day-event-planning-abu-dhabi-dubai',
+    path: '/blog/uae-national-day-event-planning-abu-dhabi-dubai/',
+    title: 'UAE National Day 2026 Event Planning: Corporate Celebration Ideas in Abu Dhabi & Dubai',
+    date: '8th November 2026',
+    dateIso: '2026-11-08',
+    author: 'Business',
+    editor: 'Fareeha',
+    featuredImage: '/blog/uae-national-day-event-planning.jpg',
+    imageAlt: 'UAE National Day corporate event planning in Abu Dhabi and Dubai with elegant celebration styling',
+    excerpt: "Celebrate the UAE's 55th National Day with thoughtfully planned corporate events, cultural experiences, elegant decorations, and memorable celebrations across Abu Dhabi and Dubai.",
+    category: 'Corporate Events',
+    readTime: '7 min read'
+  },
+  {
     id: 'luxury-event-timeline-templates-abu-dhabi',
     slug: 'luxury-event-timeline-templates-abu-dhabi',
     path: '/blog/luxury-event-timeline-templates-abu-dhabi/',
