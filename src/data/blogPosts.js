@@ -1,5 +1,35 @@
 export const blogPosts = [
   {
+    id: 'luxury-event-timeline-templates-abu-dhabi',
+    slug: 'luxury-event-timeline-templates-abu-dhabi',
+    path: '/blog/luxury-event-timeline-templates-abu-dhabi/',
+    title: 'Luxury Event Timeline Templates for Abu Dhabi Weddings and Corporate Events',
+    date: '8th November 2026',
+    dateIso: '2026-11-08',
+    author: 'Business',
+    editor: 'Fareeha',
+    featuredImage: '/blog/luxury-event-timeline-templates-abu-dhabi.jpg',
+    imageAlt: 'Elegant luxury event dining setup with ambient lighting and refined tablescape styling in Abu Dhabi',
+    excerpt: 'Clear planning checkpoints, approval points, and production lead times for weddings, galas, launches, and conferences across Abu Dhabi, Dubai, and the wider UAE.',
+    category: 'Event Planning',
+    readTime: '5 min read'
+  },
+  {
+    id: 'luxury-event-av-lighting-packages-polished-launches',
+    slug: 'luxury-event-av-lighting-packages-polished-launches',
+    path: '/blog/luxury-event-av-lighting-packages-polished-launches/',
+    title: 'Luxury event AV and lighting packages for polished launches',
+    date: '8th November 2026',
+    dateIso: '2026-11-08',
+    author: 'Business',
+    editor: 'Fareeha',
+    featuredImage: '/blog/luxury-event-av-lighting-packages.jpg',
+    imageAlt: 'Sophisticated corporate event stage setup with professional lighting, display screens, and refined production design',
+    excerpt: 'Luxury event AV and lighting packages are the fastest way to turn a venue into a controlled, premium experience. The right package combines sound, lighting, screens, and show control around the event’s goal, not just the room size.',
+    category: 'Event Production',
+    readTime: '6 min read'
+  },
+  {
     id: 'outdoor-event-rentals-abu-dhabi-open-air-venues',
     slug: 'outdoor-event-rentals-abu-dhabi-open-air-venues',
     path: '/blog/outdoor-event-rentals-abu-dhabi-open-air-venues/',

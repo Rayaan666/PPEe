@@ -35,7 +35,9 @@ const routes = [
   '/blog/',
   '/blog/exhibition-stand-design-companies-dubai/',
   '/blog/corporate-event-food-station-packages/',
-  '/blog/outdoor-event-rentals-abu-dhabi-open-air-venues/'
+  '/blog/outdoor-event-rentals-abu-dhabi-open-air-venues/',
+  '/blog/luxury-event-av-lighting-packages-polished-launches/',
+  '/blog/luxury-event-timeline-templates-abu-dhabi/'
 ];
 
 const skipClientBuild = process.argv.includes('--skip-client-build');
@@ -80,7 +82,7 @@ async function prerender() {
     }
 
     let renderedHtml = html;
-    if (route === '/privacy-policy/' || route === '/terms-conditions/') {
+    if (route === '/privacy-policy/' || route === '/terms-conditions/' || route === '/blog/luxury-event-av-lighting-packages-polished-launches/' || route === '/blog/luxury-event-timeline-templates-abu-dhabi/') {
       // In React 19 SSR, document metadata (<title>, <meta>, <link>) is rendered into body/root HTML.
       // Move metadata elements into <head> so SEO meta description is in the initial server-rendered HTML head.
       const extracted = [];

@@ -22,6 +22,8 @@ import BlogListing from './pages/BlogListing';
 import BlogPostExhibitionDubai from './pages/BlogPostExhibitionDubai';
 import BlogPostFoodStations from './pages/BlogPostFoodStations';
 import BlogPostOutdoorRentals from './pages/BlogPostOutdoorRentals';
+import BlogPostLuxuryAV from './pages/BlogPostLuxuryAV';
+import BlogPostEventTimelines from './pages/BlogPostEventTimelines';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsConditions from './pages/TermsConditions';
 
@@ -102,6 +104,10 @@ export function AppContent() {
           <Route path="/blog/corporate-event-food-station-packages/" element={<BlogPostFoodStations />} />
           <Route path="/blog/outdoor-event-rentals-abu-dhabi-open-air-venues" element={<BlogPostOutdoorRentals />} />
           <Route path="/blog/outdoor-event-rentals-abu-dhabi-open-air-venues/" element={<BlogPostOutdoorRentals />} />
+          <Route path="/blog/luxury-event-av-lighting-packages-polished-launches" element={<BlogPostLuxuryAV />} />
+          <Route path="/blog/luxury-event-av-lighting-packages-polished-launches/" element={<BlogPostLuxuryAV />} />
+          <Route path="/blog/luxury-event-timeline-templates-abu-dhabi" element={<BlogPostEventTimelines />} />
+          <Route path="/blog/luxury-event-timeline-templates-abu-dhabi/" element={<BlogPostEventTimelines />} />
 
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/gallery/" element={<Gallery />} />
